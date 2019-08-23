@@ -7,6 +7,10 @@ class ActiveSupport::TestCase
   fixtures :all
   include ApplicationHelper
 
+  def setup
+    @user = users(:michael)
+  end
+
   def is_logged_in?
     !session[:user_id].nil?
   end
