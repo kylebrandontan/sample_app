@@ -25,6 +25,16 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
+  #Activates an account
+  def activate
+    update_columns(activated: true, activated_at: Time.zone.now)
+end
+
+  #Send activation email
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
   #Returns true if given token matches the digest
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
