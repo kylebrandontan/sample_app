@@ -56,6 +56,11 @@ end
     UserMailer.password_reset(self).deliver_now
   end
 
+  #Checks for password reset has expired
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
   private
 
   #Converts email to lowercase.
