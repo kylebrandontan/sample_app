@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email #exercise 11.1 downcase blah blah
   before_create :create_activation_digest
