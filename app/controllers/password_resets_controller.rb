@@ -27,7 +27,7 @@ before_action :check_expiration, only: [:edit, :update] #Case 1, expired passwor
     elsif @user.update_attributes(user_params) #Case 4, successful!
       log_in @user
       @user.update_attribute(:reset_digest, nil)
-      flash[:success] = "Good job bro. Now don't forget your password again!"
+      flash[:success] = "Password has been reset. Don't forget it next time, foo"
       redirect_to @user
     else
       render 'edit'                             #Case 2, when invalid password attempt
